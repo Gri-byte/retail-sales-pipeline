@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+htmlcov/
+.coverage
+data/raw/*.csv
+data/processed/*.csv
+*.egg-info/
+.venv/
+venv/
