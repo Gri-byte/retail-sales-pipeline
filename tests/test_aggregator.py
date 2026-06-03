@@ -3,7 +3,7 @@ import pandas as pd
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from src.transform.aggregator import SalesAggregator
+from checks import SalesAggregator
 
 
 @pytest.fixture

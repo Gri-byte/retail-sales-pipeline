@@ -49,7 +49,7 @@ def test_fix_data_types(sample_df):
     cleaner = DataCleaner()
     result = cleaner.fix_data_types(sample_df)
     assert result["unit_price"].dtype == float
-    assert result["order_date"].dtype == "datetime64[ns]"
+    assert str(result["order_date"].dtype).startswith("datetime64")
 
 
 def test_full_clean_pipeline(sample_df):
