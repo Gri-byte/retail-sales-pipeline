@@ -45,4 +45,4 @@ python pipeline.py                     # run full pipeline
 
 ## 🛠️ Stack
 
-`Python 3.11` · `Pandas` · `python-dotenv` · `pytest` · `pytest-cov` · `loguru` · `GitHub Actions`
+`Python 3.12` · `Pandas` · `python-dotenv` · `pytest` · `pytest-cov` · `loguru` · `GitHub Actions`
