@@ -28,6 +28,7 @@ from src.checks.reconciliation import (
     assert_revenue_reconciliation,
     assert_order_count_reconciliation,
 )
+from src.checks.anomaly_detection import RegionalAnomalyDetector
 
 logger.remove()
 logger.add(sys.stdout, format="<green>{time:HH:mm:ss}</green> | <level>{level:<8}</level> | {message}")
@@ -79,6 +80,12 @@ def run_pipeline():
     logger.info("🔁 [RECONCILE] Verifying totals match source data...")
     assert_revenue_reconciliation(clean_df, daily_df)
     assert_order_count_reconciliation(clean_df, daily_df)
+
+    # ── ANOMALY DETECTION ───────────────────────────────────────────────────────
+    logger.info("🔍 [ANOMALY] Scanning regions for statistical outliers...")
+    detector = RegionalAnomalyDetector(z_threshold=2.0)
+    anomalies = detector.detect(regional_df)
+    detector.report(anomalies)  # warns but does not halt the pipeline
 
     # ── LOAD ──────────────────────────────────────────────────────────────────
     logger.info("💾 [LOAD] Writing output files...")
