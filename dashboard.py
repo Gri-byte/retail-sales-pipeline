@@ -25,6 +25,21 @@ st.set_page_config(
 PROCESSED_PATH = Path("data/processed")
 
 
+def ensure_data_exists():
+    """
+    Generates sample data and runs the pipeline if processed files are missing.
+    This lets the dashboard work out-of-the-box on Streamlit Cloud without
+    any manual setup steps.
+    """
+    if (PROCESSED_PATH / "daily_sales.csv").exists():
+        return
+    import subprocess
+    import sys
+    with st.spinner("First run — generating data and running pipeline..."):
+        subprocess.run([sys.executable, "data/generate_sample_data.py"], check=True)
+        subprocess.run([sys.executable, "pipeline.py"], check=True)
+
+
 # ── Data loading ──────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
@@ -45,6 +60,7 @@ st.markdown(
     "Data flows through 5 quality gates before reaching this dashboard."
 )
 
+ensure_data_exists()
 daily, regional, top_products = load_data()
 
 if daily is None:
