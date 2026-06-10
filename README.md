@@ -1,4 +1,4 @@
-**# 🛒 Retail Sales ETL Pipeline
+# 🛒 Retail Sales ETL Pipeline
 
 ![CI/CD](https://github.com/Gri-byte/retail-sales-pipeline/actions/workflows/pipeline.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue?style=flat-square&logo=python)
@@ -108,4 +108,4 @@ Jobs run in sequence: tests must pass before the pipeline executes. Processed da
 
 ## 🛠️ Stack
 
-`Python 3.11` · `Pandas` · `loguru` · `pytest` · `pytest-cov` · `python-dotenv` · `GitHub Actions`**
+`Python 3.11` · `Pandas` · `loguru` · `pytest` · `pytest-cov` · `python-dotenv` · `GitHub Actions`

@@ -1,8 +1,5 @@
 import pandas as pd
 from loguru import logger
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from config.settings import REQUIRED_COLUMNS
 
 

@@ -1,7 +1,5 @@
 import pytest
 import pandas as pd
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.utils.validator import assert_schema, assert_volume, assert_drop_rate, assert_data_freshness
 
 

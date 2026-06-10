@@ -2,8 +2,7 @@ import pandas as pd
 from loguru import logger
 from dataclasses import dataclass, field
 from typing import List
-
-VALID_REGIONS = {"North", "South", "East", "West", "Central"}
+from src.utils.validator import VALID_REGIONS
 
 
 @dataclass
@@ -27,16 +26,6 @@ def check_business_rules(df: pd.DataFrame) -> List[RuleViolation]:
       WARNING - unit_price outliers      → possible data entry error
     """
     violations: List[RuleViolation] = []
-
-    # ── ERROR: Negative revenue ──────────────────────────────────────────────
-    neg = df[(df["unit_price"] * df["quantity"]) < 0]
-    if len(neg):
-        violations.append(RuleViolation(
-            rule="no_negative_revenue",
-            severity="ERROR",
-            count=len(neg),
-            details=f"{len(neg)} rows produce negative revenue (unit_price × quantity < 0)",
-        ))
 
     # ── ERROR: Zero or negative quantity ────────────────────────────────────
     zero_qty = df[df["quantity"] <= 0]
